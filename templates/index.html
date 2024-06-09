@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <title>Deepfake Video Detection</title>
+    <meta charset="utf-8" />
+  </head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+
+  <body>
+
+    <nav class="navbar navbar-expand-custom navbar-mainbg" style="position:fixed; top:0px; z-index:5; width:100%;">
+        <a class="navbar-brand navbar-logo" href="#">Deepfake Detection</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#about"><i class="fas fa-tachometer-alt"></i>About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#detect"><i class="far fa-address-book"></i>Detect</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#model"><i class="far fa-clone"></i>Model</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="parallax-section" style="background-image: url('../static/images/intro.jpg');">
+        <div class="parallax-heading">
+            <h2>Deepfake Detector</h2>
+        </div>
+    </section>
+        <section id="about">
+            <div class="about-section">
+                <img src="../static/images/intro.jpg" alt="About Image" class="about-image">
+                <div class="about-content">
+                    <h1>DeepFake?</h1>
+                    <p>In the rapidly evolving digital landscape, the advent of deepfake technology has posed 
+                        significant challenges to the authenticity and credibility of media content. 
+                        Deepfakes, which involve the creation of hyper-realistic fake videos or images 
+                        using artificial intelligence, have the potential to mislead audiences, spread 
+                        misinformation, and even be used for malicious purposes. To counteract these threats, 
+                        there is a growing need for advanced deepfake detection methods that can accurately identify manipulated content.
+                        <br>
+                        This website aims to provide a comprehensive platform for deepfake detection, 
+                        leveraging the latest advancements in machine learning and fusion methods. By 
+                        offering a wide range of tools and resources, it seeks to empower journalists, 
+                        researchers, and the public to navigate the complex landscape of deepfake technology. 
+                        The platform incorporates advanced deepfake detection techniques, including but not limited 
+                        to recurrent neural networks, convolutional traces analysis, and adversarial training, to 
+                        ensure the highest level of accuracy in identifying manipulated media.
+                        <br>
+                        Furthermore, the website is designed to foster a community of experts and enthusiasts 
+                        interested in deepfake detection, providing a space for sharing knowledge, discussing 
+                        methodologies, and collaborating on research. By promoting transparency and critical thinking 
+                        in the digital age, this website aims to contribute to the development of robust defenses 
+                        against deepfake technology, safeguarding the integrity of media and the public's trust in information.
+                        
+                        </p>                
+                    </div>
+            </div>
+
+        </section>
+    
+
+        <section id="detect" class="parallax-section" style="background-image: url('../static/images/upload.jpg');">
+            <div class="parallax-heading">
+                <h2>Detect</h2>
+            </div>
+        </section>
+        <!-- Introduction Section with Image on the Right -->
+        <section  style="height:600px;">
+            <div class="introduction-section">
+                <div class="intro-content">
+                    <h1>Detect Deepfakes</h1>
+                    <p>Upload a video
+                    </p>
+                    <form method="post" action="/Detect" enctype="multipart/form-data">
+                        <div class="file-upload">
+                            <div class="file-select">
+                              <div class="file-select-button" id="fileName">Choose File</div>
+                              <div class="file-select-name" id="noFile">No file chosen...</div> 
+                              <input type="file" name="video" id="chooseFile">
+                            </div>
+                          </div>
+                          <br>
+                          <button type="submit" style="background-color: black; color: white; border-radius: 10%; padding: 10px 20px; border: none; cursor: pointer;">Submit</button>
+                    </form>
+                </div>
+                <img src="../static/images/upload.jpg" alt="Introduction Image" class="intro-image">
+            </div>
+        </section>
+    
+
+        <section id="model" class="parallax-section" style="background-image: url('../static/images/model.jpg');">
+            <div class="parallax-heading">
+                <h2>Model Used</h2>
+            </div>
+        </section>
+        <!-- Contact Section with Image on the Left -->
+        <section >
+            <div class="contact-section">
+                <img src="../static/images/model.jpg" alt="Contact Image" class="contact-image">
+                <div class="contact-content">
+                    <h1>Model Used</h1>
+                    <p>The model used in this project is a sophisticated combination of Convolutional Neural Networks (CNN) 
+                        and Recurrent Neural Networks (RNN), specifically designed for the detection of deepfake videos. It 
+                        leverages the power of the pre-trained ResNext CNN model to extract frame-level features from videos, 
+                        which are then processed by a Long Short-Term Memory (LSTM) network to classify whether the video is 
+                        a deepfake or a real video. This approach is particularly effective because it allows the model to 
+                        analyze the temporal dynamics of the video content, comparing frames sequentially to identify 
+                        patterns indicative of deepfake manipulation.
+                        <br>
+                        The ResNext CNN model, specifically the `resnext50_32x4d` variant, is utilized for its high 
+                        performance and efficiency in feature extraction. This model is pre-trained on the ImageNet 
+                        dataset, providing a solid foundation for feature learning. The extracted features are then fed 
+                        into an LSTM network, which is configured with a single layer, 2048 latent dimensions, and 2048 
+                        hidden layers. This setup enables the model to process sequences of frames in a way that captures 
+                        both the spatial and temporal aspects of the video content.
+                        <br>
+                        The model also incorporates a dropout layer with a 0.4 dropout rate to mitigate overfitting, 
+                        and a LeakyReLU activation function to introduce non-linearity. Following the LSTM layer, 
+                        a linear layer with 2048 input features and 2 output features is used to classify the video 
+                        as either deepfake or real. The model concludes with an adaptive average pooling layer to 
+                        reduce the spatial dimensions of the feature maps, preparing the output for classification.
+                        
+                        This combination of CNN and RNN allows the model to effectively analyze the sequential 
+                        nature of video content, making it capable of detecting deepfakes with a high degree of 
+                        accuracy. The model's architecture is designed to be robust and adaptable, capable of 
+                        processing videos of varying lengths and content, making it a powerful tool for deepfake 
+                        detection in real-world applications.
+                        </p>
+                </div>
+            </div>
+        </section>
+
+        
+      <footer>ALL RIGHTS RESERVED</footer>
+      <script src="../static/js/index.js"></script>
+  </body>
+  </html>
